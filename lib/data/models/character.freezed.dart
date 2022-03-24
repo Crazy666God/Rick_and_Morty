@@ -208,10 +208,10 @@ class _$InfoTearOff {
   const _$InfoTearOff();
 
   _Info call(
-      {required int count, required int page, String? next, String? prev}) {
+      {required int count, required int pages, String? next, String? prev}) {
     return _Info(
       count: count,
-      page: page,
+      pages: pages,
       next: next,
       prev: prev,
     );
@@ -228,7 +228,7 @@ const $Info = _$InfoTearOff();
 /// @nodoc
 mixin _$Info {
   int get count => throw _privateConstructorUsedError;
-  int get page => throw _privateConstructorUsedError;
+  int get pages => throw _privateConstructorUsedError;
   String? get next => throw _privateConstructorUsedError;
   String? get prev => throw _privateConstructorUsedError;
 
@@ -241,7 +241,7 @@ mixin _$Info {
 abstract class $InfoCopyWith<$Res> {
   factory $InfoCopyWith(Info value, $Res Function(Info) then) =
       _$InfoCopyWithImpl<$Res>;
-  $Res call({int count, int page, String? next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -255,7 +255,7 @@ class _$InfoCopyWithImpl<$Res> implements $InfoCopyWith<$Res> {
   @override
   $Res call({
     Object? count = freezed,
-    Object? page = freezed,
+    Object? pages = freezed,
     Object? next = freezed,
     Object? prev = freezed,
   }) {
@@ -264,9 +264,9 @@ class _$InfoCopyWithImpl<$Res> implements $InfoCopyWith<$Res> {
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      page: page == freezed
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      pages: pages == freezed
+          ? _value.pages
+          : pages // ignore: cast_nullable_to_non_nullable
               as int,
       next: next == freezed
           ? _value.next
@@ -285,7 +285,7 @@ abstract class _$InfoCopyWith<$Res> implements $InfoCopyWith<$Res> {
   factory _$InfoCopyWith(_Info value, $Res Function(_Info) then) =
       __$InfoCopyWithImpl<$Res>;
   @override
-  $Res call({int count, int page, String? next, String? prev});
+  $Res call({int count, int pages, String? next, String? prev});
 }
 
 /// @nodoc
@@ -300,7 +300,7 @@ class __$InfoCopyWithImpl<$Res> extends _$InfoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? count = freezed,
-    Object? page = freezed,
+    Object? pages = freezed,
     Object? next = freezed,
     Object? prev = freezed,
   }) {
@@ -309,9 +309,9 @@ class __$InfoCopyWithImpl<$Res> extends _$InfoCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      page: page == freezed
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      pages: pages == freezed
+          ? _value.pages
+          : pages // ignore: cast_nullable_to_non_nullable
               as int,
       next: next == freezed
           ? _value.next
@@ -329,14 +329,14 @@ class __$InfoCopyWithImpl<$Res> extends _$InfoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Info with DiagnosticableTreeMixin implements _Info {
   const _$_Info(
-      {required this.count, required this.page, this.next, this.prev});
+      {required this.count, required this.pages, this.next, this.prev});
 
   factory _$_Info.fromJson(Map<String, dynamic> json) => _$$_InfoFromJson(json);
 
   @override
   final int count;
   @override
-  final int page;
+  final int pages;
   @override
   final String? next;
   @override
@@ -344,7 +344,7 @@ class _$_Info with DiagnosticableTreeMixin implements _Info {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Info(count: $count, page: $page, next: $next, prev: $prev)';
+    return 'Info(count: $count, pages: $pages, next: $next, prev: $prev)';
   }
 
   @override
@@ -353,7 +353,7 @@ class _$_Info with DiagnosticableTreeMixin implements _Info {
     properties
       ..add(DiagnosticsProperty('type', 'Info'))
       ..add(DiagnosticsProperty('count', count))
-      ..add(DiagnosticsProperty('page', page))
+      ..add(DiagnosticsProperty('pages', pages))
       ..add(DiagnosticsProperty('next', next))
       ..add(DiagnosticsProperty('prev', prev));
   }
@@ -364,7 +364,7 @@ class _$_Info with DiagnosticableTreeMixin implements _Info {
         (other.runtimeType == runtimeType &&
             other is _Info &&
             const DeepCollectionEquality().equals(other.count, count) &&
-            const DeepCollectionEquality().equals(other.page, page) &&
+            const DeepCollectionEquality().equals(other.pages, pages) &&
             const DeepCollectionEquality().equals(other.next, next) &&
             const DeepCollectionEquality().equals(other.prev, prev));
   }
@@ -373,7 +373,7 @@ class _$_Info with DiagnosticableTreeMixin implements _Info {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(count),
-      const DeepCollectionEquality().hash(page),
+      const DeepCollectionEquality().hash(pages),
       const DeepCollectionEquality().hash(next),
       const DeepCollectionEquality().hash(prev));
 
@@ -391,7 +391,7 @@ class _$_Info with DiagnosticableTreeMixin implements _Info {
 abstract class _Info implements Info {
   const factory _Info(
       {required int count,
-      required int page,
+      required int pages,
       String? next,
       String? prev}) = _$_Info;
 
@@ -400,7 +400,7 @@ abstract class _Info implements Info {
   @override
   int get count;
   @override
-  int get page;
+  int get pages;
   @override
   String? get next;
   @override

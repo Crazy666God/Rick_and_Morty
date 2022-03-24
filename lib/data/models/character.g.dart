@@ -21,14 +21,14 @@ Map<String, dynamic> _$$_CharacterToJson(_$_Character instance) =>
 
 _$_Info _$$_InfoFromJson(Map<String, dynamic> json) => _$_Info(
       count: json['count'] as int,
-      page: json['page'] as int,
+      pages: json['pages'] as int,
       next: json['next'] as String?,
       prev: json['prev'] as String?,
     );
 
 Map<String, dynamic> _$$_InfoToJson(_$_Info instance) => <String, dynamic>{
       'count': instance.count,
-      'page': instance.page,
+      'pages': instance.pages,
       'next': instance.next,
       'prev': instance.prev,
     };

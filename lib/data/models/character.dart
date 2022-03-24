@@ -19,7 +19,7 @@ class Character with _$Character {
 class Info with _$Info {
   const factory Info({
     required int count,
-    required int page,
+    required int pages,
     String? next,
     String? prev,
   }) = _Info;
