@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:rick_and_morty/presentation/pages/home_page.dart';
+import 'package:rick_and_morty/bloc_observable.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized(); // этот виджет используется для взаимодействия с движком флаттер, т.е. соединяет фреймворк и движок флаттер, так как пакету path_provider потребуется создавать хранилище для андройд и ios то он будет использывать каналы платформы для вызова собственного кода который будет выполняться асинхронно и для того чтобы он мог вызвать собственный код нужен этот метод 
+
+  final storage = await HydratedStorage.build(
+    storageDirectory:
+        await getTemporaryDirectory(), // находится в библиотеки path_provider
+  ); // т.е. будем хранить состояние во временных папках
+
+  HydratedBlocOverrides.runZoned(
+    () => runApp(const MyApp()),
+    blocObserver: CharacterBlocObservable(),
+    storage: storage,
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Rick and Morty',
       theme: ThemeData(
         brightness: Brightness.light,
