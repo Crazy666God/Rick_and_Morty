@@ -13,7 +13,9 @@ class CustomListTile extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: Container(
-        height: MediaQuery.of(context).size.height / 7,
+        height: MediaQuery.of(context).orientation == Orientation.portrait
+            ? MediaQuery.of(context).size.height / 7
+            : MediaQuery.of(context).size.height / 4,
         color: const Color.fromRGBO(86, 86, 86, 0.8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

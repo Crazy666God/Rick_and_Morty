@@ -30,7 +30,8 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   void initState() {
-    if (_storage.runtimeType.toString().isEmpty) { //проверка на сохранность состояния приложения
+    if (_storage.runtimeType.toString().isEmpty) {
+      //проверка на сохранность состояния приложения
       if (_currentResults.isEmpty) {
         context
             .read<CharacterBloc>()
@@ -70,12 +71,12 @@ class _SearchPageState extends State<SearchPage> {
               _currentSearchStr = value;
 
               searchDebounce?.cancel(); //отменяет таймер перед каждым вводом
-              searchDebounce = Timer(const Duration(milliseconds: 500), () { //таймер перед тем как подать запрос
+              searchDebounce = Timer(const Duration(milliseconds: 500), () {
+                //таймер перед тем как подать запрос
                 context
-                  .read<CharacterBloc>()
-                  .add(CharacterEvent.fetch(name: value, page: _currentPage));
+                    .read<CharacterBloc>()
+                    .add(CharacterEvent.fetch(name: value, page: _currentPage));
               });
-              
             },
           ),
         ),
@@ -143,8 +144,11 @@ class _SearchPageState extends State<SearchPage> {
         itemBuilder: (context, index) {
           final result = currentResults[index];
           return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 16),
-              child: CustomListTile(result: result));
+            padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 16),
+            child: CustomListTile(
+              result: result,
+            ),
+          );
         },
       ),
     );
