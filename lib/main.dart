@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:rick_and_morty/ad_state.dart';
 import 'package:rick_and_morty/presentation/pages/home_page.dart';
 import 'package:rick_and_morty/bloc_observable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 void main() async {
-
-  WidgetsFlutterBinding.ensureInitialized(); // этот виджет используется для взаимодействия с движком флаттер, т.е. соединяет фреймворк и движок флаттер, так как пакету path_provider потребуется создавать хранилище для андройд и ios то он будет использывать каналы платформы для вызова собственного кода который будет выполняться асинхронно и для того чтобы он мог вызвать собственный код нужен этот метод 
+  WidgetsFlutterBinding
+      .ensureInitialized(); // этот виджет используется для взаимодействия с движком флаттер, т.е. соединяет фреймворк и движок флаттер, так как пакету path_provider потребуется создавать хранилище для андройд и ios то он будет использывать каналы платформы для вызова собственного кода который будет выполняться асинхронно и для того чтобы он мог вызвать собственный код нужен этот метод
 
   final storage = await HydratedStorage.build(
     storageDirectory:
         await getTemporaryDirectory(), // находится в библиотеки path_provider
   ); // т.е. будем хранить состояние во временных папках
 
+  final initFuture = MobileAds.instance.initialize();
+  final adState = AdState(initFuture);
+
   HydratedBlocOverrides.runZoned(
-    () => runApp(const MyApp()),
+    () => runApp(
+      Provider.value(
+        value: adState,
+        builder: (context, child) => const MyApp(),
+      ),
+    ),
     blocObserver: CharacterBlocObservable(),
     storage: storage,
   );

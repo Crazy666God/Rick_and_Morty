@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rick_and_morty/data/models/character.dart';
 import 'package:rick_and_morty/presentation/bloc/character_bloc.dart';
@@ -28,6 +28,7 @@ class _SearchPageState extends State<SearchPage> {
 
   final _storage = HydratedBlocOverrides.current?.storage;
 
+  
   @override
   void initState() {
     if (_storage.runtimeType.toString().isEmpty) {
